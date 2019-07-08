@@ -1,6 +1,8 @@
-# Natural Language Processing
+# A Code-First Intro to Natural Language Processing
 
-This course is being taught in the [University of San Francisco's Masters of Science in Data Science](https://www.usfca.edu/arts-sciences/graduate-programs/analytics) program, summer 2019.  The course is taught in Python with Jupyter Notebooks, using libraries such as sklearn, nltk, pytorch, and fastai.
+You can find out about the course in [this blog post](https://www.fast.ai/2019/07/08/fastai-nlp/) and all [lecture videos are available here](https://www.youtube.com/playlist?list=PLtmWHNX-gukKocXQOkQjuVxglSDYWsSh9).
+
+This course was originally taught in the [University of San Francisco's Masters of Science in Data Science](https://www.usfca.edu/arts-sciences/graduate-programs/analytics) program, summer 2019.  The course is taught in Python with Jupyter Notebooks, using libraries such as sklearn, nltk, pytorch, and fastai.
 
 ## Table of Contents
 The following topics will be covered:
