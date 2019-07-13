@@ -1,5 +1,6 @@
 from fastai.basics import *
 import re
+import string
 
 
 def get_wiki(path,lang):
@@ -35,13 +36,14 @@ def split_wiki(path,lang):
 
     dest.mkdir(exist_ok=True, parents=True)
     title_re = re.compile(rf'<doc id="\d+" url="https://{lang}.wikipedia.org/wiki\?curid=\d+" title="([^"]+)">')
+    punctuation_re = re.compile(f'[{re.escape(string.punctuation)}]')
     lines = (path/name).open()
     f=None
 
     for i,l in enumerate(lines):
         if i%100000 == 0: print(i)
         if l.startswith('<doc id="'):
-            title = title_re.findall(l)[0].replace('/','_')
+            title = punctuation_re.sub('_', title_re.findall(l)[0])
             if len(title)>150: continue
             if f: f.close()
             f = (dest/f'{title}.txt').open('w')
