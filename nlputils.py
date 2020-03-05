@@ -26,7 +26,7 @@ def get_wiki(path,lang):
     shutil.rmtree(path/'text')
 
 
-def split_wiki(path,lang):
+def split_wiki(path,lang,encoding='utf-8'):
     dest = path/'docs'
     name = f'{lang}wiki'
     if dest.exists():
@@ -35,7 +35,7 @@ def split_wiki(path,lang):
 
     dest.mkdir(exist_ok=True, parents=True)
     title_re = re.compile(rf'<doc id="\d+" url="https://{lang}.wikipedia.org/wiki\?curid=\d+" title="([^"]+)">')
-    lines = (path/name).open()
+    lines = (path/name).open(encoding=encoding)
     f=None
 
     for i,l in enumerate(lines):
@@ -44,7 +44,7 @@ def split_wiki(path,lang):
             title = title_re.findall(l)[0].replace('/','_')
             if len(title)>150: continue
             if f: f.close()
-            f = (dest/f'{title}.txt').open('w')
+            f = (dest/f'{title}.txt').open('w', encoding=encoding)
         else: f.write(l)
     f.close()
     return dest
