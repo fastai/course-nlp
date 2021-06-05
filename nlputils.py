@@ -20,8 +20,8 @@ def get_wiki(path,lang):
     with working_directory(path):
         if not (path/'wikiextractor').exists(): os.system('git clone https://github.com/attardi/wikiextractor.git')
         print("extracting...")
-        os.system("python wikiextractor/WikiExtractor.py --processes 4 --no_templates " +
-            f"--min_text_length 1800 --filter_disambig_pages --log_file log -b 100G -q {xml_fn}")
+        os.system("python -m wikiextractor.wikiextractor.WikiExtractor --no-templates -b 100G -q " + f"{xml_fn}")
+        
     shutil.move(str(path/'text/AA/wiki_00'), str(path/name))
     shutil.rmtree(path/'text')
 
