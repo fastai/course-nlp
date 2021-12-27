@@ -1,4 +1,5 @@
 from fastai.basics import *
+from fastdownload import download_url
 import re
 
 
